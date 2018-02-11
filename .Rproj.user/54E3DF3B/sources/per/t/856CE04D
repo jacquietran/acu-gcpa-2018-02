@@ -1,0 +1,24 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1518302626798.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1349625964",
+    "id" : "856CE04D",
+    "lastKnownWriteTime" : 1518336481,
+    "last_content_update" : 1518336481175,
+    "path" : "~/GitHub/acu-gcpa-2018-02/presentation.Rmd",
+    "project_path" : "presentation.Rmd",
+    "properties" : {
+        "cursorPosition" : "310,51",
+        "last_setup_crc32" : "B4AB062Bde8f6529",
+        "scrollLine" : "303",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
