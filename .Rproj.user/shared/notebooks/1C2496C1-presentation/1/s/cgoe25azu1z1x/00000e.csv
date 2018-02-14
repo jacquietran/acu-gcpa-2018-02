@@ -1,6 +1,0 @@
-"0","p <- ggplot(ausOpenATP, aes(x = factor(year), y = winner_age, fill = winner_age))
-p <- p + geom_point(alpha = 1/5, colour = winner_age)
-"
-"2","Error in layer(data = data, mapping = mapping, stat = stat, geom = GeomPoint,  : 
-  object 'winner_age' not found
-"

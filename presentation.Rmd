@@ -54,21 +54,42 @@ Complex Excel workbooks can 'break' when shared with others
 
 Separation of data, analysis outputs, visualisations, and reports
 
-Reproducible and transparent workflow
+Reproducible, transparent, and less error-prone workflow
+
+Much faster for repetitive actions than point-and-click
+
+Requires you to think early and often about data structure
 
 Procedures are documented via scripts and command history
+
+Build up a library of repeatable, adaptable procedures
+
+# Now for some demos! | But first...
+
+## A quick intro to R {.build}
+
+R is a statistical programming language, RStudio is an IDE for using R
+
+Its most fundamental component is 'base R' but it is highly extensible
 
 R is free and open source: users benefit from packages created by others
 
 The R community is global and active - lots of help for when you get stuck!
 
+Look for R workshops, conferences, and meetup groups, e.g., R Ladies
+
 # Demo 1 | Summarising data from the Winter Olympics
 
-## Import data {.build}
+***
 
 Demo 1 uses the `winter` data set [downloadable from this link](https://www.kaggle.com/the-guardian/olympic-games/data).
 
-Let's import the data into R.
+It includes all podium results from Winter Olympic Games that have taken place from 1924 to 2014, inclusive.
+
+<br />
+<center><img src="ChloeKim.jpg" width="60%" /></center>
+
+## Import data
 
 ``` {r demo1DataImport, message = FALSE}
 
@@ -213,7 +234,7 @@ goldMedalTotalsWide <- dcast(goldMedalTotals,
 
 ```
 
-## Calculate summary statistics
+## Calculate summary statistics {.build}
 
 ``` {r demo1SummaryStatsPart2}
 
@@ -244,7 +265,7 @@ datatable(goldMedalTotalsWide, options = list(dom = 't'), rownames = FALSE)
 
 ```
 
-## Calculate summary statistics
+## Calculate summary statistics {.build}
 
 We can use the data frame we've just created - gold medal totals per team per Games - to calculate the median number of gold medals won by Canada, Norway, and Sweden at the last five Games.
 
@@ -323,7 +344,48 @@ ausOpenATP_winner_age
 
 ```
 
-# Demo 3 | Deeper analyses
+## Plot the data - other examples
+
+- Men's match losers
+- Women's match winners
+- Women's match losers
+- Ace counts
+- Serena games won versus games played career time course
+
+# A small sample of other cool things you can do in R
+
+## Statistical analyses
+
+NOTE TO SELF: Fill in some info here. The intent of this presentation was not to do a deep dive into statistics, but R is more than capable of running a vast array of stats including:
+
+- NHST: t tests, ANOVAs, correlation, linear / logistic regression
+- MBI? Effect sizes
+- Linear and generalised linear mixed models
+- Multivariate statistics
+- Classification models, e.g., decision trees
+- Network analysis
+- Time series decomposition and forecasting
+- Much much more...
+
+## Text mining
+
+NOTE TO SELF: Insert Julia Silge example here
+
+## Geospatial plots
+
+<center><a href="https://twitter.com/marcus_volz/status/944492030117363713" target="_blank"><img src="Volz.png" width="100%" /></a></center>
+
+## Geospatial plots
+
+NOTE TO SELF: Insert The Data Game shot plots example here
+
+## Interactive dashboards
+
+NOTE TO SELF: Insert Len Kiefer example here
+
+## Create your own coding blog
+
+NOTE TO SELF: Insert Yihui Xie / blogdown example here
 
 ***
 
@@ -357,7 +419,30 @@ ausOpenATP_winner_age
 
 ['Introduction to R for Excel Users'](https://tomhopper.me/2016/05/03/r-for-excel-users/): Free ebook by Tom Hopper
 
-# Appendix 2: Sports data sets
+# Appendix 2: The R community
+
+## The R community {.build}
+
+Follow the [#rstats hashtag on Twitter](https://twitter.com/search?q=%23rstats&src=typd)
+
+Many prominent R users and developers have blogs and / or tweet regularly. Here are some of my favourites:
+
+- @JennyBryan
+- @ma_salmon
+- @alice_data
+- @dataandme
+- @visnut
+- @kierisi
+- @thomasp85
+- @xieyihui
+- @drob
+- @juliasilge
+
+Join, read, and contribute to the R Studio Community discussions: [https://community.rstudio.com/](https://community.rstudio.com/)
+
+You can discover lots of weird, wonderful, and useful R packages and repositories on Github: [https://github.com/trending/r](https://github.com/trending/r)
+
+# Appendix 3: Sports data sets
 
 ## 'Ready to analyse'
 

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1518607107032.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "BC231C06",
+    "lastKnownWriteTime" : 3419473789575321445,
+    "last_content_update" : 1518607107032,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "CB28D45C",
+        "caption" : "ausOpenATP",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=ausOpenATP&cache_key=CB28D45C",
+        "displayedObservations" : 1270,
+        "environment" : "",
+        "object" : "ausOpenATP",
+        "preview" : 0,
+        "totalObservations" : 1270,
+        "variables" : 72
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
