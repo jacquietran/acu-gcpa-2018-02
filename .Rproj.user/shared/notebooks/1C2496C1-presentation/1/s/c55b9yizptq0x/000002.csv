@@ -1,4 +1,0 @@
-"0","# Identify duplicates"
-"0","goldMedalComparison$duplicates <- duplicated(goldMedalComparison$uniqueEventID)"
-"0","goldMedalComparison %>%"
-"0","  select(uniqueEventID, duplicates)"

@@ -14,13 +14,12 @@ knitr::opts_chunk$set(echo = TRUE)
 # Load libraries
 library(dplyr)
 library(ggplot2)
-library(ochRe)
 
 ```
 
 ***
 
-<center><img src="2017lecture.png" width="100%" /></center>
+<center><img src="images/2017lecture.png" width="100%" /></center>
 
 ## A general workflow for sports analytics {.build}
 
@@ -64,9 +63,9 @@ Procedures are documented via scripts and command history
 
 Build up a library of repeatable, adaptable procedures
 
-# Now for some demos! | But first...
+# Now for some demos!
 
-## A quick intro to R {.build}
+## First, a quick intro to R... {.build}
 
 R is a statistical programming language, RStudio is an IDE for using R
 
@@ -75,8 +74,6 @@ Its most fundamental component is 'base R' but it is highly extensible
 R is free and open source: users benefit from packages created by others
 
 The R community is global and active - lots of help for when you get stuck!
-
-Look for R workshops, conferences, and meetup groups, e.g., R Ladies
 
 # Demo 1 | Summarising data from the Winter Olympics
 
@@ -87,7 +84,7 @@ Demo 1 uses the `winter` data set [downloadable from this link](https://www.kagg
 It includes all podium results from Winter Olympic Games that have taken place from 1924 to 2014, inclusive.
 
 <br />
-<center><img src="ChloeKim.jpg" width="60%" /></center>
+<center><img src="images/ChloeKim.jpg" width="60%" /></center>
 
 ## Import data
 
@@ -101,7 +98,7 @@ winter <- read_csv("winter.csv", col_names = TRUE, col_types = NULL)
 
 ```
 
-## Check the data {.build}
+## Check the data
 
 ``` {r demo1DataCheck}
 
@@ -280,41 +277,38 @@ goldMedalMedians
 
 ```
 
-# Demo 2 | Visualising tennis data
+# Demo 2 | Visualising AFLW data
+
+***
+
+For demo 2, we will use data from season 1 of the AFLW to show how sports data can be visualised using R.
+
+<center><img src="images/1490593790108.jpg" width="60%" /></center>
 
 ## Import the data
 
-We will use data from the ATP and WTA tennis tours to show how sports data can be visualised using R.
-
 ``` {r demo2DataImport, message = FALSE}
 
-# The deuce package performs web scraping to obtain up-to-date data
-# from tennis matches played on the ATP and WTA tours
-library(deuce)
+# This data was obtained from this Github repository:
+# https://github.com/ropenscilabs/ozwomensport/tree/master/AFLW
+aflwTeamStats <- read_csv("teams.csv", col_names = TRUE, col_types = NULL)
 
-# Load up the data from ATP and WTA tours
-data(atp_matches)
-data(wta_matches)
+head(aflwTeamStats)
 
 ```
 
 ## Subset the data
 
-Let's investigate data from the Australian Open, from 2008 to 2017. We need to subset the data first.
+Let's compare some basic stats across clubs. First, we need to prepare the data.
 
 ``` {r demo2DataSubset}
 
-ausOpenATP <- atp_matches %>%
-  filter(tourney_name == "Australian Open" & year >= 2008)
-
-ausOpenWTA <- wta_matches %>%
-  filter(tourney_name == "Australian Open" & year >= 2008)
+aflwTeamStats <- aflwTeamStats %>%
+  filter(Club != "All Clubs")
 
 ```
 
 ## Plot the data
-
-Let's try plotting the age of men's match winners across each year.
 
 ``` {r demo2BuildPlot1}
 
@@ -322,80 +316,70 @@ Let's try plotting the age of men's match winners across each year.
 # It uses a layer-by-layer approach to building plots
 library(ggplot2)
 
+# Sort by average kicks per game
+aflwTeamStats <- aflwTeamStats[order(aflwTeamStats$Kicks_AVG), ]
+
 # Build the plot
-p <- ggplot(ausOpenATP, aes(x = factor(year), y = winner_age, fill = winner_age))
-p <- p + geom_boxplot(aes(group = cut_width(year, 0.25)),
-                      fill = "white",
-                      colour = "#3366FF",
-                      outlier.alpha = 0.5,
-                      outlier.size = 2)
-p <- p + labs(title = "Age of men's match winners - Australian Open, 2008-2017",
-              x = "Year",
-              y = "Age of winner")
-ausOpenATP_winner_age <- p
+p <- ggplot(aflwTeamStats, aes(x = reorder(Club, -Kicks_AVG), y = Kicks_AVG, fill = Club))
+p <- p + geom_bar(stat = "identity")
+p <- p + scale_y_continuous(limits = c(0,150),
+                            breaks = c(0,25,50,75,100,125,150))
+p <- p + labs(title = "Comparing average kicks per game across AFLW teams",
+              x = "Club",
+              y = "Average kicks per game")
+p <- p + theme(legend.position = "none",
+               axis.text.x  = element_text(angle=90, vjust=0.5))
+aflwKicksPlot <- p
 
 ```
 
 ## Plot the data
 
-``` {r demo2ShowPlot1, echo = FALSE, fig.width = 10}
+``` {r demo2ShowPlot1, echo = FALSE, fig.width = 7, fig.height = 5}
 
-ausOpenATP_winner_age
+aflwKicksPlot
 
 ```
 
-## Plot the data - other examples
+# Other neat things you can do in R
 
-- Men's match losers
-- Women's match winners
-- Women's match losers
-- Ace counts
-- Serena games won versus games played career time course
+## Statistical analyses {.build}
 
-# A small sample of other cool things you can do in R
+This presentation is _not_ a deep dive into statistics, but R is more than capable of running a vast array of stats including:
 
-## Statistical analyses
-
-NOTE TO SELF: Fill in some info here. The intent of this presentation was not to do a deep dive into statistics, but R is more than capable of running a vast array of stats including:
-
-- NHST: t tests, ANOVAs, correlation, linear / logistic regression
-- MBI? Effect sizes
-- Linear and generalised linear mixed models
-- Multivariate statistics
-- Classification models, e.g., decision trees
+- Hypothesis testing techniques
+- Effect sizes
+- Mixed models
+- Regression and classification
 - Network analysis
-- Time series decomposition and forecasting
-- Much much more...
+- Time series analysis
+- And much much more...
 
 ## Text mining
 
-NOTE TO SELF: Insert Julia Silge example here
+<center><a href="https://www.tidytextmining.com/sentiment.html" target="_blank"><img src="images/sentiment.png" width="90%" /></a></center>
 
 ## Geospatial plots
 
-<center><a href="https://twitter.com/marcus_volz/status/944492030117363713" target="_blank"><img src="Volz.png" width="100%" /></a></center>
+<center><a href="https://twitter.com/marcus_volz/status/944492030117363713" target="_blank"><img src="images/Volz.png" width="55%" /></a></center>
 
 ## Geospatial plots
 
-NOTE TO SELF: Insert The Data Game shot plots example here
+<center><a href="https://thedatagame.com.au/2015/09/27/how-to-create-nba-shot-charts-in-r/" target="_blank"><img src="images/shotchart.png" width="65%" /></a></center>
 
 ## Interactive dashboards
 
-NOTE TO SELF: Insert Len Kiefer example here
-
-## Create your own coding blog
-
-NOTE TO SELF: Insert Yihui Xie / blogdown example here
+<center><a href="http://lenkiefer.com/chartbooks/jan2017/mortgage_rate_viewer_jan_2017.html" target="_blank"><img src="images/dash.png" width="90%" /></a></center>
 
 ***
 
-<center><img src="thanks-1804597_1920.jpg" width="55%" /></center>
+<center><img src="images/thanks-1804597_1920.jpg" width="55%" /></center>
 <br />
-<center>Link to this presentation: </center>
+<center>[https://github.com/jacquietran/acu-gcpa-2018-02](https://github.com/jacquietran/acu-gcpa-2018-02)</center>
 <br />
 <hr />
 <br />
-<center>Dr Jacquie Tran | @jacquietran | https://www.jacquietran.com</center>
+<center>Dr Jacquie Tran | @jacquietran | [https://www.jacquietran.com](https://www.jacquietran.com)</center>
 
 # Appendix 1: Learning R
 
@@ -427,16 +411,7 @@ Follow the [#rstats hashtag on Twitter](https://twitter.com/search?q=%23rstats&s
 
 Many prominent R users and developers have blogs and / or tweet regularly. Here are some of my favourites:
 
-- @JennyBryan
-- @ma_salmon
-- @alice_data
-- @dataandme
-- @visnut
-- @kierisi
-- @thomasp85
-- @xieyihui
-- @drob
-- @juliasilge
+@JennyBryan   |   @ma_salmon   |   @alice_data   |   @dataandme   |   @visnut   |   @kierisi   |   @thomasp85   |   @xieyihui   |   @drob   |   @juliasilge
 
 Join, read, and contribute to the R Studio Community discussions: [https://community.rstudio.com/](https://community.rstudio.com/)
 
@@ -477,4 +452,5 @@ AFL draft and trade data from [Draft Guru](https://www.draftguru.com.au/)
 ## References and resources
 
 [Introduction to dplyr](http://stat545.com/block009_dplyr-intro.html)
+
 [An introduction to reshape2](http://seananderson.ca/2013/10/19/reshape.html)

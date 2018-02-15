@@ -1,5 +1,0 @@
-"0","# Remove duplicates from the data"
-"0","# and remove temporary variables used for identifying duplicates"
-"0","goldMedalComparison <- goldMedalComparison %>%"
-"0","  filter(duplicates == FALSE) %>%"
-"0","  select(-uniqueEventID, -duplicates)"

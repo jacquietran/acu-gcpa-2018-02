@@ -1,0 +1,5 @@
+"0","# Create a new variable to identify each unique event"
+"0","goldMedalComparison$uniqueEventID <-"
+"0","  paste(goldMedalComparison$Year, goldMedalComparison$Sport,"
+"0","        goldMedalComparison$Discipline, goldMedalComparison$Country,"
+"0","        goldMedalComparison$Gender, goldMedalComparison$Event, sep=""_"")"

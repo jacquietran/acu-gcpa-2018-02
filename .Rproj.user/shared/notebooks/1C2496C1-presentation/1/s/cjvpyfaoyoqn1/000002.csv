@@ -1,7 +1,0 @@
-"0","# The dplyr package includes useful data manipulation functions"
-"0","library(dplyr)"
-"0","# Subset the data"
-"0","goldMedalComparison <- winter %>%"
-"0","  filter(Medal == ""Gold"""
-"0","         & Country %in% c(""CAN"", ""NOR"", ""SWE"")"
-"0","         & Year >= 2006)"
