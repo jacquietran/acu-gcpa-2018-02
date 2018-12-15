@@ -1,5 +1,0 @@
-"0","goldMedalMedians <- goldMedalTotalsWide %>%"
-"0","  summarise(CAN = median(CAN),"
-"0","            NOR = median(NOR),"
-"0","            SWE = median(SWE))"
-"0","goldMedalMedians"

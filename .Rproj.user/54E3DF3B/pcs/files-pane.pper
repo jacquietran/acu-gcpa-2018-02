@@ -1,6 +1,10 @@
 {
-    "path" : "~/GitHub/acu-gcpa-2018-02",
+    "path" : "~/GitHub/gfc-load-injury-risk-hons-2016",
     "sortOrder" : [
+        {
+            "ascending" : false,
+            "columnIndex" : 1
+        },
         {
             "ascending" : true,
             "columnIndex" : 2

@@ -1,4 +1,0 @@
-"0","# The readr package is efficient for reading (importing) of CSV files"
-"0","library(readr)"
-"0","# Read the data in"
-"0","winter <- read_csv(""winter.csv"", col_names = TRUE, col_types = NULL)"

@@ -1,8 +1,0 @@
-"0","aflwInside50Conversion <- aflwPlayerStats %>%
-  select(Club, Inside50_TOT, Goals_TOT, Matches_TOT) %>%
-  summarise(Inside50_PM = Inside50_TOT / Matches_TOT,
-            Goals_PM = Goals_TOT / Matches_TOT)
-"
-"2","Error in summarise_impl(.data, dots) : 
-  Column `Inside50_PM` must be length 1 (a summary value), not 227
-"

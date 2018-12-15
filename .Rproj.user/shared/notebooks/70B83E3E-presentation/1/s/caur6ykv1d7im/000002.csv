@@ -1,4 +1,0 @@
-"0","# NAs appear in the data because Sweden did not win any gold medals"
-"0","# at the 1998 and 2002 Winter Games"
-"0","# Replace these NAs with zeroes"
-"0","goldMedalTotalsWide$SWE[is.na(goldMedalTotalsWide$SWE)] <- 0"

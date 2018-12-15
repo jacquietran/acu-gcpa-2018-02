@@ -1,4 +1,0 @@
-"0","# The DT package is used to display interactive tables in HTML documents"
-"0","library(DT)"
-"0","# Display the table"
-"0","datatable(goldMedalTotalsWide, options = list(dom = 't'), rownames = FALSE)"

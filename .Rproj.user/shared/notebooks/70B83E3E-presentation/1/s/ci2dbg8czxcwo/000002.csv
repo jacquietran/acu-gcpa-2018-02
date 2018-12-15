@@ -1,4 +1,0 @@
-"0","aflwTeamStats <- read_csv(""team.csv"", col_names = TRUE, col_types = NULL)
-"
-"2","Error: 'team.csv' does not exist in current working directory ('C:/Users/Jacquiet/Documents/GitHub/acu-gcpa-2018-02').
-"
